@@ -1,0 +1,16 @@
+com/example/calculatorapp/BuildConfig.java
+ com.example.calculatorapp.BuildConfig
+com/example/calculatorapp/MainActivity.java
+ com.example.calculatorapp.MainActivity
+ com.example.calculatorapp.MainActivity$1
+ com.example.calculatorapp.MainActivity$10
+ com.example.calculatorapp.MainActivity$11
+ com.example.calculatorapp.MainActivity$12
+ com.example.calculatorapp.MainActivity$2
+ com.example.calculatorapp.MainActivity$3
+ com.example.calculatorapp.MainActivity$4
+ com.example.calculatorapp.MainActivity$5
+ com.example.calculatorapp.MainActivity$6
+ com.example.calculatorapp.MainActivity$7
+ com.example.calculatorapp.MainActivity$8
+ com.example.calculatorapp.MainActivity$9
