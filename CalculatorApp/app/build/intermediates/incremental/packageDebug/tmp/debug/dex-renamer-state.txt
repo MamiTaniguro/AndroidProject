@@ -1,0 +1,4 @@
+#Sun Jul 04 19:55:09 PDT 2021
+base.0=/Users/omami/Desktop/CalculatorApp/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
