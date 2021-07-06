@@ -175,6 +175,195 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                history = textViewHistory.getText().toString();
+                currentResult = textViewResult.getText().toString();
+                textViewHistory.setText(history + currentResult + "+");
+
+                if(operator)
+                {
+                    if (status == "multiplacition")
+                    {
+                       multiply();
+                    }
+                    else if (status == "division")
+                    {
+                       divide();
+                    }
+                    else if (status == "subtraction")
+                    {
+                        minus();
+                    }
+                    else
+                    {
+                        plus();
+                    }
+                }
+
+                status = "addition";
+                operator = false;
+                number = null;
+            }
+        });
+
+        buttonMulti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                history = textViewHistory.getText().toString();
+                currentResult = textViewResult.getText().toString();
+                textViewHistory.setText(history + currentResult + "-");
+
+                if(operator)
+                {
+                    if (status == "multiplacition")
+                    {
+                        multiply();
+                    }
+                    else if (status == "division")
+                    {
+                        divide();
+                    }
+                    else if (status == "addition")
+                    {
+                        minus();
+                    }
+                    else
+                    {
+                        plus();
+                    }
+                }
+
+                status = "subtraction";
+                operator = false;
+                number = null;
+
+            }
+        });
+
+        buttonMulti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                history = textViewHistory.getText().toString();
+                currentResult = textViewResult.getText().toString();
+                textViewHistory.setText(history + currentResult + "*");
+
+                if (operator)
+                {
+                    if (status == "addition")
+                    {
+                        plus();
+                    }
+                    else if (status == "division")
+                    {
+                        divide();
+                    }
+                    else if (status == "subtraction")
+                    {
+                        minus();
+                    }
+                    else
+                    {
+                        multiply();
+                    }
+
+                }
+
+                status = "multiplacition";
+                operator = false;
+                number = null;
+
+            }
+        });
+
+        buttonDivide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                history = textViewHistory.getText().toString();
+                currentResult = textViewResult.getText().toString();
+                textViewHistory.setText(history+currentResult+"/");
+
+                if (operator)
+                {
+                    if (status == "multiplacition")
+                    {
+                        multiply();
+                    }
+                    else if (status == "addition")
+                    {
+                        plus();
+                    }
+                    else if (status == "subtraction")
+                    {
+                        minus();
+                    }
+                    else
+                    {
+                        divide();
+                    }
+                }
+
+                status = "division";
+                operator = false;
+                number = null;
+            }
+        });
+
+        buttonEquals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (operator)
+                {
+                    if (status == "addition")
+                    {
+                        plus();
+                    }
+                    else if (status == "subtraction")
+                    {
+                        minus();
+                    }
+                    else if (status == "multiplacition")
+                    {
+                        multiply();
+                    }
+                    else if (status == "division")
+                    {
+                        divide();
+                    }
+                    else
+                    {
+                        firstNumber = Double.parseDouble(textViewResult.getText().toString());
+                    }
+                }
+
+                operator = false;
+                isEqualsControl = true;
+            }
+        });
+
+        buttonDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (dot)
+                {
+                    if (number == null)
+                    {
+                        number = "0.";
+                    }
+                    else
+                    {
+                        number = number + ".";
+                    }
+                }
+
+                textViewResult.setText(number);
+                dot = false;
+            }
+        });
     }
 
     public void numberClick(String view)
@@ -209,5 +398,64 @@ public class MainActivity extends AppCompatActivity {
         isAControl = false;
         buttonDel.setClickable(true);
         isEqualsControl = false;
+    }
+
+    public void plus()
+    {
+        lastNumber = Double.parseDouble(textViewResult.getText().toString());
+        firstNumber = firstNumber + lastNumber;
+
+        textViewResult.setText((m_formatter.format(firstNumber)));
+        dot = true;
+    }
+
+    public void minus()
+    {
+        if (firstNumber == 0)
+        {
+            firstNumber = Double.parseDouble(textViewResult.getText().toString());
+        }
+        else
+        {
+            lastNumber = Double.parseDouble(textViewResult.getText().toString());
+            firstNumber = firstNumber - lastNumber;
+        }
+
+        textViewResult.setText(m_formatter.format(firstNumber));
+        dot = true;
+    }
+
+    public void multiply()
+    {
+        if (firstNumber == 0)
+        {
+            firstNumber = 1;
+            lastNumber = Double.parseDouble(textViewResult.getText().toString());
+            firstNumber = firstNumber * lastNumber;
+        }
+        else
+        {
+            lastNumber = Double.parseDouble(textViewResult.getText().toString());
+            firstNumber = firstNumber * lastNumber;
+        }
+
+        textViewResult.setText(m_formatter.format(firstNumber));
+    }
+
+    public void divide()
+    {
+        if (firstNumber == 0)
+        {
+            lastNumber = Double.parseDouble(textViewResult.getText().toString());
+            firstNumber = lastNumber / 1;
+        }
+        else
+        {
+            lastNumber = Double.parseDouble(textViewResult.getText().toString());
+            firstNumber = firstNumber / lastNumber;
+        }
+
+        textViewResult.setText(m_formatter.format(firstNumber));
+        dot = true;
     }
 }
